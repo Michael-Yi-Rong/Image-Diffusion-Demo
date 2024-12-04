@@ -1,0 +1,14 @@
+#model network
+from sgm.modules.diffusionmodules.controlmodel import ControlledUNetModel3D
+
+controlnet_config={'target':'modules.diffusionmodules.controlmodel.ControlNet3D','params':{'insert_crossview':True,'spatial_only_attn_type': 'intra-view',
+				'use_checkpoint': True,'in_channels': 8,'hint_channels': 19,'model_channels': 320,'attention_resolutions': [ 4, 2, 1 ],
+				'num_res_blocks': 2,'channel_mult': [ 1, 2, 4, 4 ],'num_head_channels': 64,'use_spatial_transformer': True,'use_linear_in_transformer': True,
+				'transformer_depth': 1,'context_dim': 1024,'legacy': False,'control_scales': 1.0, 'alpha': 1,'num_frames': 8}}
+
+
+unet=ControlledUNetModel3D(insert_crossview=True,spatial_only_attn_type='intra-view',use_checkpoint=True,
+                           use_fp16=True,in_channels=8,out_channels=4,model_channels=320,attention_resolutions=[ 4, 2, 1 ],
+                           num_res_blocks=2,channel_mult=[ 1, 2, 4, 4 ],num_head_channels=64,
+                           use_spatial_transformer=True,use_linear_in_transformer=True,transformer_depth=1,
+                           context_dim=1024,legacy=False,num_frames=8,alpha=1,controlnet_config=controlnet_config)
