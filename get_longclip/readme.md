@@ -1,2 +1,3 @@
-# Copyright (c) 2024 beichenzbc
-# Source: https://github.com/beichenzbc/Long-CLIP
+Copyright (c) 2024 beichenzbc
+
+Source: https://github.com/beichenzbc/Long-CLIP
